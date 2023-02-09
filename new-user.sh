@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#!/bin/bash
 # Creating bash scripting for mutiple users
 
 userfile=userlist.txt
