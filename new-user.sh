@@ -1,18 +1,23 @@
 #!/bin/bash
-# Creating bash scripting for new username
 
-if [ $(id -u) = 0 ]; then
-   read -p "Enter username : " username
-   read -s -p "Enter password : " password
+#!/bin/bash
+# Creating bash scripting for mutiple users
 
-# Verify username and adding username/password
-
+userfile=userlist.txt
+username=$(cat userlist.txt | tr 'A-Z' 'a-z')
+password=$username@007
+for user in $username
+do
+useradd -m $user
+   echo $password | passwd --stdin $user
    grep "^$username" /etc/passwd >/dev/null
-  if [ $? = 0 ]; then
-     echo "$username already exist!"
-    exit 1
-  else 
-     useradd -m -p "pass" "$username"
-    [ $? = 0 ] && echo "User has beeen successfully added to the system"
-    fi
-fi 
+  if [ $? = username ]; then
+   echo "$user already exist!"
+   exit 1
+  else
+   echo "Users have been succesfully added to the system"
+  fi
+done
+
+						   
+
